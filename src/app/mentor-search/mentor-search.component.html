@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<h2>Mentors List for {{techname}}</h2>
+<div *ngIf="searchResults.length>0">
+<table border="1px solid black" align="center" class="table table-hover">
+    <thead class="thead-dark">
+            <tr>
+                    <th scope="col">Profile Pic</th>
+                    <th scope="col">Mentor Name</th>
+                    <th scope="col">Ratings</th>
+                    <th scope="col">No of Trainings Completed</th>
+                    <th scope="col">Action</th>
+                </tr>
+    </thead>
+    
+    <tr *ngFor="let mentor of searchResults">
+        <th scope="row"><img class="avatar" alt="Avatar" src="../../assets/images/face-6.jpg"></th>
+        <td>{{mentor.username}}</td>
+        <td>{{mentor.id}}</td>
+        <td>{{mentor.role}}</td>
+        <td><button type="button" class="btn btn-primary">Propose</button></td>
+    </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+</table>
+</div>
+<div *ngIf="searchResults.length == 0">
+        <table border="1px solid black" align="center" class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+                <th scope="col">Profile Pic</th>
+                <th scope="col">Mentor Name</th>
+                <th scope="col">Ratings</th>
+                <th scope="col">No of Trainings Completed</th>
+                <th scope="col">Action</th>
+            </tr>
+</thead>
+
+    <tr ><td colspan="5">No Results Found</td></tr>
+    </table>
+</div>

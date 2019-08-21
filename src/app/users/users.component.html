@@ -1,0 +1,46 @@
+<h2>Users List</h2>
+<div class="redbox">Blocked Users</div>
+<div class="greenbox">Active Users</div>
+<div *ngIf="users.length>0">
+<table align="center" class="table table-hover">
+    <thead class="thead-dark">
+            <tr>
+                    <th scope="col">Profile Pic</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Action</th>
+                </tr>
+    </thead>
+    
+    <tr *ngFor="let user of users">
+        <th [ngClass]="{'blocked': !user.isActive }"  scope="row"><img class="avatar" alt="Avatar" src="../../assets/images/face-6.jpg"></th>
+        <td>{{user.username}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.role == '2' ? 'User' : (user.role == '3' ? 'Mentor' : 'Admin') }}</td>
+        <td *ngIf="user.isActive">
+            <!-- <button type="button" class="btn btn-primary" (click)="edit(user)"> -->
+            <i class="fa fa-ban" (click) = "block(user)"><span class="tooltiptext">Block User</span></i>
+        <!-- </button> -->
+    </td>
+    <td *ngIf="!user.isActive">
+            <i class="fa fa-toggle-on" (click) = "unblock(user)"><span class="tooltiptext">Activate User</span></i>
+    </td>
+    </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+</table>
+</div>
+<div *ngIf="users.length == 0">
+        <table align="center" class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+                <th scope="col">Profile Pic</th>
+                <th scope="col">Email</th>
+                <th scope="col">FirstName</th>
+                <th scope="col">Role</th>
+                <th scope="col">Action</th>
+            </tr>
+</thead>
+
+    <tr><td colspan="5">No Results Found</td></tr>
+    </table>
+</div>

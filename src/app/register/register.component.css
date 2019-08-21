@@ -1,0 +1,15 @@
+form{
+    margin:10px 100px 0 100px;
+    padding:20px;
+    border:1px solid rgb(55, 36, 230);
+    z-index: 2px;
+    box-shadow: 2px 2px 5px black;
+    border-radius: 5px;
+}
+h2{
+    text-align: center;
+    margin:5px;
+}
+.mat-form-field{
+    width: 100%;
+}

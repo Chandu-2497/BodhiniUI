@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <form class="form-inline my-2 my-lg-0" *ngIf="role != 3" [formGroup]="mentorSearchForm">
+        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="technology" [(ngModel)]="technology"> -->
+        <mat-form-field>
+           
+            <mat-select [formControl]="technology" placeholder="Technology">
+              <mat-option *ngFor="let tech of technologies" [value]="tech.id">
+                {{tech.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+         
+         
+        <input class="btn btn-outline-success my-lg-0" type="submit" (click)="search()" value="Find" >
+      </form>
+      &nbsp;&nbsp;
+    <!-- <a class="navbar-brand" routerLink="home">Home</a> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <!-- <li class="nav-item active">
+          <a class="nav-link" routerLink="/students">Students <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li> -->
+       
+          <li class="nav-item">
+          <h4 style="margin-left:200px;text-align:center;color:white;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Mentor On Demand</h4>
+          </li>
+       
+       </ul>
+      <li class="nav-item" *ngIf="!isLogin">
+        <a routerLink="/home">Home</a>
+    </li>
+      <li class="nav-item" *ngIf="!isLogin">
+        <a routerLink="/login">Login</a>
+    </li>
+      <li class="nav-item" *ngIf="isLogin">
+          <a routerLink="/notification">Notifications</a>
+      </li>
+      <li class="nav-item" *ngIf="isLogin">
+        <button class="btn btn-primary" (click)="logout()">Logout</button>
+      </li>
+    </div>
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="isLogin">
+       
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link" routerLink="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+            </li>
+        <li class="nav-item" *ngIf="role == 2">
+          <a class="nav-link" routerLink="/students">Search Trainings </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Current Trainings</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/register">Completed Trainings</a>
+          </li>
+          <li class="nav-item" *ngIf="role == 3">
+                <a class="nav-link" routerLink="/register">Edit Skills</a>
+              </li>
+       
+      </ul>
+     
+    </div>
+  </nav>

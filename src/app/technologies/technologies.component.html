@@ -1,0 +1,35 @@
+<!-- <app-navbar></app-navbar> -->
+<h2>Technologies List </h2><hr>
+<app-create-tech style="left:70%; top: 25%; position: absolute;"></app-create-tech>
+
+<div *ngIf="technologies.length>0">
+<table border="1px solid black" align="center" class="table table-hover">
+    <thead class="thead-dark">
+            <tr>
+                    <th scope="col">Logo</th>
+                    <th scope="col">Technology</th>
+                    <th scope="col">Action</th>
+                </tr>
+    </thead>
+    
+    <tr *ngFor="let tech of technologies">
+        <th scope="row"><img class="avatar" alt="logo" src="{{tech.url}}"></th>
+        <td>{{tech.name}}</td>
+        
+        <td> <i class="fa fa-ban" (click) = "remove(tech)"><span class="tooltiptext">Remove Technology</span></i></td>
+    </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+</table>
+</div>
+<div *ngIf="technologies.length == 0">
+        <table border="1px solid black" align="center" class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+                <th scope="col">Logo</th>
+                <th scope="col">Technology</th>
+                <th scope="col">Action</th>
+            </tr>
+</thead>
+
+    <tr ><td colspan="5">No Results Found</td></tr>
+    </table>
+</div>

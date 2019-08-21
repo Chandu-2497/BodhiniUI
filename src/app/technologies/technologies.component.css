@@ -1,0 +1,49 @@
+h2{
+    margin:20px;
+    text-shadow: 2px 2px 5px blue;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+table{
+    width:75%;
+    text-align: center;
+}
+
+.avatar{
+    vertical-align: middle;
+  width: 50px;
+  height: 50px;
+    /* border-radius: 50%; */
+}
+
+
+.fa.fa-ban{
+    color: darkblue;
+    position: relative;
+    display: inline-block;
+    /* border-bottom: 1px dotted red; */
+  }
+
+  .fa.fa-toggle-on{
+    color: green;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .fa.fa-ban .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: red;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .fa.fa-ban:hover .tooltiptext{
+    visibility: visible;
+  }

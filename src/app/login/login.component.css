@@ -1,0 +1,17 @@
+form{
+    padding:20px;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 5%;
+    /* height: 300px; */
+    border:1px solid rgb(55, 36, 230);
+   z-index: 2px;
+   box-shadow: 2px 2px 5px black;
+   border-radius: 5px;
+}
+
+h2{
+    text-align: center;
+    margin:5px;
+}
+

@@ -1,0 +1,19 @@
+<h2>Students List</h2>
+
+<table border="1px solid black" align="center" class="table table-hover">
+    <thead class="thead-dark">
+            <tr>
+                    <th scope="col">StudentID</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Student Email</th>
+                    <th scope="col">Student Address</th>
+                </tr>
+    </thead>
+    
+    <tr *ngFor="let user of users">
+        <th scope="row">{{user.id}}</th>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.address.city}}</td>
+    </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+</table>
