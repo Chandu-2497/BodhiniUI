@@ -41,7 +41,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { UsersComponent } from './users/users.component';
 import { UserMgtComponent } from './user-mgt/user-mgt.component';
 import { TechnologiesComponent } from './technologies/technologies.component';
-import { CreateTechComponent } from './create-tech/create-tech.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 
 
@@ -65,7 +64,6 @@ import { NotificationsComponent } from './notifications/notifications.component'
     UsersComponent,
     UserMgtComponent,
     TechnologiesComponent,
-    CreateTechComponent,
     NotificationsComponent
   ],
   imports: [
@@ -97,8 +95,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor , multi: true}  ,
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     fakeBackendProvider,
-    ApiService,
-    CreateTechComponent
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

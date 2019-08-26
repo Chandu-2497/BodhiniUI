@@ -1,6 +1,68 @@
 <!-- <app-navbar></app-navbar> -->
 <h2>Technologies List </h2><hr>
-<app-create-tech style="left:70%; top: 25%; position: absolute;"></app-create-tech>
+<!-- <app-create-tech ></app-create-tech> -->
+
+<button style="left:70%; top: 25%; position: absolute;" type="button" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample"
+        (click)="frame.show()" mdbWavesEffect>Add New Technology
+</button>
+
+<div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-warning" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header text-center">
+        <h4 class="modal-title white-text w-100 font-weight-bold py-2">Technology</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="md-form mb-5">
+          <mdb-icon fas icon="user" class="prefix grey-text"></mdb-icon>
+          <input type="text" id="form3" class="form-control" mdbInput mdbValidate
+                 [formControl]="name">
+          <label for="form3">Technology</label>
+          <mdb-error
+            *ngIf="name.invalid && (name.dirty || name.touched)">
+            Input invalid
+          </mdb-error>
+          <mdb-success
+            *ngIf="name.valid && (name.dirty || name.touched)">
+            Input valid
+          </mdb-success>
+        </div>
+
+        <!-- <div class="md-form">
+          <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+          <input type="url" pattern="https://.+" id="form2" class="form-control" mdbInput mdbValidate
+                 [formControl]="url">
+          <label for="form2">Icon URL</label>
+          <mdb-error
+            *ngIf="url.invalid && (url.dirty || url.touched)">
+            Input invalid
+          </mdb-error>
+          <mdb-success
+            *ngIf="url.valid && (url.dirty || url.touched)">
+            Input valid
+          </mdb-success>
+        </div> -->
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" mdbBtn color="warning" outline="true" class="waves-effect" (click)="add()" mdbWavesEffect>Add
+          <mdb-icon far icon="paper-plane" class="ml-1"></mdb-icon>
+        </a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
 
 <div *ngIf="technologies.length>0">
 <table border="1px solid black" align="center" class="table table-hover">
