@@ -5,4 +5,35 @@ body,html{
     height: 100%;
 }
 
+ label{
+     /* color:white; */
+     font-weight: 600;
+ }
+ a{
+     /* text-shadow: 5px 5px 5px; */
+     font-weight: 700;
+     line-height: 30px;
+ }
+ h2{
+     text-align: center;
+     /* margin:25px; */
+     text-shadow: 2px 2px 5px burlywood;
+     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+ }
+ 
+ body,html{
+     height: 100%;
+     background-image: url("assets/images/brandon-lam-Dd_7xDCuuUo-unsplash.jpg");
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+     
+ }
+ 
+ .bg-img{
+     background-image: url("assets/images/brandon-lam-Dd_7xDCuuUo-unsplash.jpg");
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+ }
 

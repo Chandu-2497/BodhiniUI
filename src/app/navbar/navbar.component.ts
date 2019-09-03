@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
 
   user: any;
   isLogin: boolean = false;
-  role: number = 1;
+  role: string ='Admin';
   technology = new FormControl;
   mentorSearchForm : FormGroup;
   technologies: any[] ;
@@ -44,7 +44,7 @@ export class NavbarComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     if( this.user){
       this.isLogin = true;
-      this.role = JSON.parse(this.user.role);
+      this.role = this.user.role;
     }
   }
 

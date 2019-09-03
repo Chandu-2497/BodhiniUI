@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HomeGuard } from './guards/home.guard';
+import { MentorRegisterComponent } from './mentor-register/mentor-register.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path:'register',
     component: RegisterComponent
+  },
+  {
+    path:'mentor',
+    component: MentorRegisterComponent
   },
   {
     path:'login',

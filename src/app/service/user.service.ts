@@ -22,7 +22,7 @@ getById(id: number) {
     return this.http.get(`/users/` + id);
 }
 
-register(user: User) {
+register(user: any) {
     return this.http.post(`/users/register`, user);
 }
 

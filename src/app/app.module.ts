@@ -42,6 +42,7 @@ import { UsersComponent } from './users/users.component';
 import { UserMgtComponent } from './user-mgt/user-mgt.component';
 import { TechnologiesComponent } from './technologies/technologies.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { MentorRegisterComponent } from './mentor-register/mentor-register.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
     UsersComponent,
     UserMgtComponent,
     TechnologiesComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    MentorRegisterComponent
   ],
   imports: [
     BrowserModule,

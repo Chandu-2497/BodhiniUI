@@ -130,35 +130,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             }
 
             //register mentors
-            if (request.url.endsWith('/mentors/register') && request.method === 'POST') {
-                // get new user object from post body
-                let newMentor = request.body;
-
-                // validation
-                let duplicateUser = users.filter(user => { return user.username === newMentor.username; }).length;
-                if (duplicateUser) {
-                    return throwError({ error: { message: 'Username "' + newMentor.username + '" is already taken' } });
-                }
-
-                // save new user
-                let newuser : User = new User;
-                newuser.id = users.length + 1;
-                newuser.firstName = newMentor.firstName;
-                newuser.lastName = newMentor.lastName;
-                newuser.role = '3';
-                newuser.username = newMentor.username;
-                newuser.password = newMentor.password;
-
-                newMentor.id = mentorSkills.length + 1;
-
-                users.push(newuser);
-                mentorSkills.push(newMentor);
-                localStorage.setItem('mentorSkills', JSON.stringify(mentorSkills));
-                localStorage.setItem('users', JSON.stringify(users));
-
-                // respond 200 OK
-                return of(new HttpResponse({ status: 200 ,body: newMentor}));
-            }
 
             // delete user
             if (request.url.match(/\/users\/\d+$/) && request.method === 'DELETE') {
