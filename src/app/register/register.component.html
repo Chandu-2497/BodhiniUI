@@ -19,6 +19,15 @@
               <div *ngIf="(submitted || f.lastName.touched) && f.lastName.errors.required">Last Name is required</div>
             </div>
         </div>
+        <div class="form-group">
+          <label for="exampleInputPhone">Phone</label>
+          <input type="tel" class="form-control" formControlName="phone" id="exampleInputPhone" placeholder="Phone" 
+          [ngClass] = "{ 'is-invalid' : (submitted || f.phone.touched) && f.phone.errors}" minlength="10" maxlength="10">
+          <div *ngIf="(submitted || f.phone.touched) && f.phone.errors" class="invalid-feedback">
+            <div *ngIf="(submitted || f.phone.touched) && f.phone.errors.required">Phone is required</div>
+            <div *ngIf="(submitted || f.phone.touched) && (f.phone.errors.minlength || f.phone.errors.maxlength)">Invalid Phone number!</div>
+          </div>
+        </div>
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
       <input type="email" formControlName="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"

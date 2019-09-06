@@ -11,11 +11,11 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getAll() {
-    return this.http.get<User[]>(`/users`);
+    return this.http.get<any[]>(`/users`);
 }
 
 getAllMentors(){
-    return this.http.get<Mentor[]>(`/mentorSkills`);
+    return this.http.get<any[]>(`/mentorSkills`);
 }
 
 getById(id: number) {
@@ -30,7 +30,7 @@ registerMentor(mentor: Mentor){
     return this.http.post('/mentors/register',mentor);
 }
 
-update(user: User) {
+update(user: any) {
     return this.http.put(`/users/` + user.id, user);
 }
 

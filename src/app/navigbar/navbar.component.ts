@@ -8,7 +8,7 @@ import { ApiService } from '../api.service';
 
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'app-navigbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })

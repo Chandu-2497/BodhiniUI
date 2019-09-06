@@ -6,17 +6,18 @@
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input type="email" formControlName="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" 
-          [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
-          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          [ngClass]="{ 'is-invalid': (submitted || f.username.touched) && f.username.errors }">
+          <div *ngIf="(submitted || f.username.touched) && f.username.errors" class="invalid-feedback">
               <div *ngIf="f.username.errors.required">Username is required</div>
+              <div *ngIf="f.username.errors.email">Email Format is incorrect</div>
           </div>
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
           <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1" placeholder="Password"
-          [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          [ngClass]="{ 'is-invalid': (submitted || f.password.touched) && f.password.errors }">
+          <div *ngIf="(submitted || f.password.touched) && f.password.errors" class="invalid-feedback">
               <div *ngIf="f.password.errors.required">Password is required</div>
           </div>
         </div>
@@ -24,7 +25,7 @@
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div> -->
-        <button type="submit" class="btn btn-primary">Submit</button>&nbsp;&nbsp;
+        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>&nbsp;&nbsp;
         <a routerLink="/register">Register</a>&nbsp;
         <hr>
         <a routerLink ="/">Home</a>

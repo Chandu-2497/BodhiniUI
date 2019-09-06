@@ -20,12 +20,11 @@ import { LoginComponent } from './login/login.component';
 import { Capitalize } from './pipes/capitalize';
 import { StudentsService } from './service/students.service';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { NavbarComponent } from './navbar/navbar.component';
+
 import { TrainingComponent } from './training/training.component';
 import { MentorSkillsComponent } from './mentor-skills/mentor-skills.component';
 import { MentorCalendarComponent } from './mentor-calendar/mentor-calendar.component';
 import { MentorSearchComponent } from './mentor-search/mentor-search.component';
-import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthenticationService } from './service/authentication.service';
 import { UserService } from './service/user.service';
@@ -38,11 +37,14 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { ApiService } from './api.service';
 import { HomeGuard } from './guards/home.guard';
 import { ProfileComponent } from './profile/profile.component';
-import { UsersComponent } from './users/users.component';
+
 import { UserMgtComponent } from './user-mgt/user-mgt.component';
-import { TechnologiesComponent } from './technologies/technologies.component';
+
 import { NotificationsComponent } from './notifications/notifications.component';
 import { MentorRegisterComponent } from './mentor-register/mentor-register.component';
+import { HomeModule } from './home/home.module';
+import { NavbarComponent } from './navigbar/navbar.component';
+
 
 
 @NgModule({
@@ -53,18 +55,17 @@ import { MentorRegisterComponent } from './mentor-register/mentor-register.compo
     RegisterComponent,
     LoginComponent,
     Capitalize,
-    NavbarComponent,
+    
     TrainingComponent,
     MentorSkillsComponent,
     MentorCalendarComponent,
     MentorSearchComponent,
-    HomeComponent,
     AlertComponent,
     HomepageComponent,
     ProfileComponent,
-    UsersComponent,
+  //  NavbarComponent,
     UserMgtComponent,
-    TechnologiesComponent,
+    
     NotificationsComponent,
     MentorRegisterComponent
   ],
@@ -82,10 +83,11 @@ import { MentorRegisterComponent } from './mentor-register/mentor-register.compo
     MatAutocompleteModule,
     ToastrModule.forRoot()  ,
     ModalModule.forRoot(),
-    MDBBootstrapModule,
+   
     TooltipModule,
     PopoverModule,
-    ButtonsModule                 
+    ButtonsModule   ,
+    HomeModule              
   ],
   providers: [
     StudentsService,

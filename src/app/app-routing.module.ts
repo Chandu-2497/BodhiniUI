@@ -9,6 +9,9 @@ import { AuthGuard } from './guards/auth.guard';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HomeGuard } from './guards/home.guard';
 import { MentorRegisterComponent } from './mentor-register/mentor-register.component';
+import { UsersComponent } from './users/users.component';
+import { TechnologiesComponent } from './technologies/technologies.component';
+import { HomeModule} from './home/home.module';
 
 
 const routes: Routes = [
@@ -23,7 +26,8 @@ const routes: Routes = [
   },
   {
     path:'dashboard',
-    component: HomeComponent,
+    // component: HomeComponent,
+    loadChildren : './home/home.module#HomeModule',
     canActivate: [AuthGuard]
   },
   {
