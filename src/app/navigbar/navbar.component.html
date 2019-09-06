@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <form class="form-inline my-2 my-lg-0" *ngIf="role != 'Mentor'" [formGroup]="mentorSearchForm">
+    <form class="form-inline my-2 my-lg-0" *ngIf="role != 'Mentor'" [formGroup]="mentorSearchForm" (ngSubmit)="search()">
         <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="technology" [(ngModel)]="technology"> -->
         <mat-form-field>
            
@@ -12,7 +12,7 @@
           
          
          
-        <input class="btn btn-outline-success my-lg-0" type="submit" (click)="search()" value="Find" >
+        <input class="btn btn-outline-success my-lg-0" type="submit" value="Find" >
       </form>
       &nbsp;&nbsp;
     <!-- <a class="navbar-brand" routerLink="home">Home</a> -->
@@ -60,16 +60,16 @@
               <a class="nav-link" routerLink="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
             </li>
         <li class="nav-item" *ngIf="role == 'User'">
-          <a class="nav-link" routerLink="/students">Search Trainings </a>
+          <a class="nav-link" routerLink="/dashboard">Search Trainings </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/login">Current Trainings</a>
+          <a class="nav-link" routerLink="/dashboard/current">Current Trainings</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" routerLink="/register">Completed Trainings</a>
+            <a class="nav-link" routerLink="/dashboard/completed">Completed Trainings</a>
           </li>
         <li class="nav-item" *ngIf="role == 'Mentor'">
-            <a class="nav-link" routerLink="/register">Edit Skills</a>
+            <a class="nav-link" routerLink="/dashboard/edit">Edit Skills</a>
         </li>
        
       </ul>

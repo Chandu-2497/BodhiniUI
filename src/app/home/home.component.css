@@ -1,0 +1,9 @@
+.main-panel{
+    height: 100%;
+    background-image: url("../../assets/images/dashboard.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    width: 100%;
+}

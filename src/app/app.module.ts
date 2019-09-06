@@ -36,14 +36,13 @@ import { AlertComponent } from './directives/alert.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ApiService } from './api.service';
 import { HomeGuard } from './guards/home.guard';
-import { ProfileComponent } from './profile/profile.component';
 
 import { UserMgtComponent } from './user-mgt/user-mgt.component';
 
 import { NotificationsComponent } from './notifications/notifications.component';
 import { MentorRegisterComponent } from './mentor-register/mentor-register.component';
 import { HomeModule } from './home/home.module';
-import { NavbarComponent } from './navigbar/navbar.component';
+
 
 
 
@@ -55,19 +54,14 @@ import { NavbarComponent } from './navigbar/navbar.component';
     RegisterComponent,
     LoginComponent,
     Capitalize,
-    
-    TrainingComponent,
     MentorSkillsComponent,
     MentorCalendarComponent,
-    MentorSearchComponent,
     AlertComponent,
     HomepageComponent,
-    ProfileComponent,
-  //  NavbarComponent,
     UserMgtComponent,
-    
     NotificationsComponent,
-    MentorRegisterComponent
+    MentorRegisterComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -83,7 +77,6 @@ import { NavbarComponent } from './navigbar/navbar.component';
     MatAutocompleteModule,
     ToastrModule.forRoot()  ,
     ModalModule.forRoot(),
-   
     TooltipModule,
     PopoverModule,
     ButtonsModule   ,

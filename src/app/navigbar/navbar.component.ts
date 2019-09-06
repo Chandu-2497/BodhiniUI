@@ -50,8 +50,10 @@ export class NavbarComponent implements OnInit {
 
   search(){
     // this.technology.setValue(this.technologies.find(item => item == this.technology.value).id)
-      this.router.navigate(['/mentors',this.technology.value]);
-    
+    if(this.isLogin)
+      this.router.navigate(['/dashboard/mentors',this.technology.value]);
+    else 
+    this.router.navigate(['/mentors',this.technology.value]);
   }
 
   logout(){

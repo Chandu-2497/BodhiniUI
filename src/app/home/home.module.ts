@@ -8,6 +8,11 @@ import { NavbarComponent } from '../navigbar/navbar.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { TrainingComponent } from '../training/training.component';
+import { CurrentTrainingsComponent } from '../current-trainings/current-trainings.component';
+import { ProfileComponent } from '../profile/profile.component';
+import { MentorSearchComponent } from '../mentor-search/mentor-search.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 
 
@@ -16,7 +21,11 @@ import { MatSelectModule } from '@angular/material/select';
       HomeComponent,
       UsersComponent,
       TechnologiesComponent,
-      NavbarComponent
+      NavbarComponent,
+      TrainingComponent,
+      CurrentTrainingsComponent,
+      ProfileComponent,
+      MentorSearchComponent
   ],
   imports: [
     HomeRoutingModule,
@@ -26,7 +35,7 @@ import { MatSelectModule } from '@angular/material/select';
     ReactiveFormsModule,
     MatSelectModule
   ],
-  exports: [NavbarComponent],
+  exports: [NavbarComponent,MentorSearchComponent,HomeComponent],
   bootstrap: []
 })
 export class HomeModule { }

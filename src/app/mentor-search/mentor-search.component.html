@@ -1,4 +1,4 @@
-<app-navigbar></app-navigbar>
+<app-navigbar *ngIf="!isLogin"></app-navigbar>
 <h2>Mentors List for {{techname}}</h2>
 <div *ngIf="searchResults.length>0">
 <table border="1px solid black" align="center" class="table table-hover">

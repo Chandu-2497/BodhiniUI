@@ -11,12 +11,12 @@ export class HomeGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         if (localStorage.getItem('currentUser')) {
-            this.router.navigate(['/dashboard']);
+            // this.router.navigate(['/dashboard']);
             return false;
         }
 
         
-        this.router.navigate(['/home']);
+        // this.router.navigate(['/home']);
         return true;
     }
 }

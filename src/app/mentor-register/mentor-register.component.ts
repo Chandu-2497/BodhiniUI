@@ -6,6 +6,7 @@ import { AlertService } from '../service/alert.service';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-mentor-register',
@@ -19,17 +20,19 @@ export class MentorRegisterComponent implements OnInit {
   submitted: boolean = false;
   loading: boolean = false;
   mentorForm: FormGroup;
-  technologyList: any[] = [{id:1,name:'Spring Boot'},{id:2,name:'Angular'},{id:3,name:'Core Java'},{id:4,name:'Advanced Java'}];
+  technologyList: any[] ;
   timings: any[] ;
-  facilitiesList: any[] = [{id:1,name:'Materials'},{id:2,name:'Examples/Cloud Labs'},{id:3,name:'Email/Modnum Verification'},{id:4,name:'LinkedIn URL'}];
+  facilitiesList: any[] = [{id:1,name:'Materials'},{id:2,name:'Examples/Cloud Labs'},{id:3,name:'Email/Modnum Verification'}];
   constructor(private formBuilder: FormBuilder,
     private userService: UserService,
+    private apiservice: ApiService,
     private alertService: AlertService,
     private router: Router,
     private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getMentorForm();
+    this.technologyList = this.apiservice.getAllTechnologies();
   }
 
   getMentorForm(){
@@ -40,15 +43,14 @@ export class MentorRegisterComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required],
       technologies: ['',Validators.required],
-      // timings: ['',Validators.required],
+      linkedInUrl: ['',Validators.required],
       facilities: ['',Validators.required],
       phone: ['',Validators.required],
-      city: ['',Validators.required],
-      address:['',Validators.required],
       yearsOfExperience: ['',Validators.required],
       role : ['Mentor'],
-      from: [''],
-      to: ['']
+      toc: ['',Validators.required],
+      from: ['',Validators.required],
+      to: ['',Validators.required]
     })
     
    

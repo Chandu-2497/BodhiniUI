@@ -27,6 +27,7 @@ const routes: Routes = [
   {
     path:'dashboard',
     // component: HomeComponent,
+    //Lazy Loading
     loadChildren : './home/home.module#HomeModule',
     canActivate: [AuthGuard]
   },
@@ -39,16 +40,16 @@ const routes: Routes = [
     component: MentorRegisterComponent
   },
   {
+    path:'mentors/:technology',
+    component: MentorRegisterComponent
+  },
+  {
     path:'login',
     component: LoginComponent
   },
   {
-    path: 'mentors/:technology',
-    component: MentorSearchComponent
-  },
-  {
     path: '**',
-    redirectTo: ''
+    redirectTo: 'home'
   },
 ];
 

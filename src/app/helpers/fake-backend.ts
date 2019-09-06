@@ -15,6 +15,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         let activeUsers : any[] = users.filter(item => item.isActive);
         let mentorSkills: any[] = JSON.parse(localStorage.getItem('mentorSkills')) || [];
         let technologies: any[] = JSON.parse(localStorage.getItem('technologies')) || [];
+        let mentorCalendar: any[] = JSON.parse(localStorage.getItem('mentorCalendar')) || [];
 
 
         // wrap in delayed observable to simulate server api call
@@ -90,7 +91,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             if (request.url.endsWith('/users/register') && request.method === 'POST') {
                 // get new user object from post body
                 let newUser = request.body;
-
+                let newSkill : any = {} ;
                 // validation
                 let duplicateUser = users.filter(user => { return user.username === newUser.username; }).length;
                 if (duplicateUser) {
@@ -101,6 +102,23 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 newUser.id = users.length + 1;
                 newUser.isActive = true;
                 users.push(newUser);
+                if(newUser.role == 'Mentor'){
+                    newSkill['id'] = mentorSkills.length + 1;
+                    newSkill['mentorId'] = newUser.id;
+                    newSkill['name'] = newUser.technologies.toString();
+                    newSkill['toc'] = newUser.toc;
+                    newSkill['prerequisites'] = newUser.facilities.toString;
+                    mentorSkills.push(newSkill);
+                    localStorage.setItem('mentorSkills',JSON.stringify(mentorSkills));
+                    let newCal = {};
+                    newCal['id'] = mentorCalendar.length + 1;
+                    newCal['mentorId'] = newUser.id; 
+                    newCal['from'] = newUser.from;
+                    newCal['to'] = newUser.to;
+                    mentorCalendar.push(newCal);
+                    localStorage.setItem('mentorCalendar',JSON.stringify(mentorCalendar));
+                }
+
                 localStorage.setItem('users', JSON.stringify(users));
 
                 // respond 200 OK
