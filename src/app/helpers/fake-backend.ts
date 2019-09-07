@@ -51,12 +51,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             // get users
             if (request.url.endsWith('/users') && request.method === 'GET') {
                 // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
-                if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                // if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
                     return of(new HttpResponse({ status: 200, body: users }));
-                } else {
-                    // return 401 not authorised if token is null or invalid
-                    return throwError({ error: { message: 'Unauthorised' } });
-                }
+                // } else {
+                //     // return 401 not authorised if token is null or invalid
+                //     return throwError({ error: { message: 'Unauthorised' } });
+                // }
             }
 
             //get mentorSkills
@@ -69,6 +69,16 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return throwError({ error: { message: 'Unauthorised' } });
                 // }
             }
+            if (request.url.endsWith('/mentorCalendar') && request.method === 'GET') {
+                // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
+                // if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                    return of(new HttpResponse({ status: 200, body: mentorCalendar }));
+                // } else {
+                    // return 401 not authorised if token is null or invalid
+                    return throwError({ error: { message: 'Unauthorised' } });
+                // }
+            }
+
 
             // get user by id
             if (request.url.match(/\/users\/\d+$/) && request.method === 'GET') {
@@ -107,7 +117,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     newSkill['mentorId'] = newUser.id;
                     newSkill['name'] = newUser.technologies.toString();
                     newSkill['toc'] = newUser.toc;
-                    newSkill['prerequisites'] = newUser.facilities.toString;
+                    newSkill['prerequisites'] = newUser.facilities.toString();
                     mentorSkills.push(newSkill);
                     localStorage.setItem('mentorSkills',JSON.stringify(mentorSkills));
                     let newCal = {};

@@ -9,10 +9,13 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-          
-         
-         
-        <input class="btn btn-outline-success my-lg-0" type="submit" value="Find" >
+
+        
+      <input type="time" [formControl] = "from" placeholder="from"/>
+   
+      <input type="time" atp-time-picker [formControl] = "to" placeholder="to" />
+     
+        <button  class="btn btn-success" type="submit" >FIND</button>
       </form>
       &nbsp;&nbsp;
     <!-- <a class="navbar-brand" routerLink="home">Home</a> -->
@@ -35,13 +38,13 @@
        
        </ul>
       <li class="nav-item" *ngIf="!isLogin">
-        <a routerLink="/home">Home</a>
+       <button type="button" class="btn btn-light"  ><a routerLink="/home">Home</a></button>
     </li>
       <li class="nav-item" *ngIf="!isLogin">
-        <a routerLink="/login">Login</a>
+       <button type="button" class="btn btn-light"><a routerLink="/login">Login</a></button>
     </li>
       <li class="nav-item" *ngIf="isLogin">
-          <a routerLink="/notification">Notifications</a>
+         <button type="button" class="btn btn-light"> <a routerLink="/notification">Notifications</a></button>
       </li>
       <li class="nav-item" *ngIf="isLogin">
         <button class="btn btn-primary" (click)="logout()">Logout</button>
@@ -56,31 +59,37 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent" *ngIf="isLogin">
       <ul class="navbar-nav mr-auto" *ngIf="role != 'Admin'">
-          <li class="nav-item active">
-              <a class="nav-link" routerLink="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+          <li class="nav-item"  [routerLinkActive]="['active']">
+              <a class="nav-link"  routerLink="/dashboard">{{role}}&nbsp;Dashboard <span class="sr-only">(current)</span></a>
             </li>
-        <li class="nav-item" *ngIf="role == 'User'">
-          <a class="nav-link" routerLink="/dashboard">Search Trainings </a>
+        <li class="nav-item"  [routerLinkActive]="['active']"  *ngIf="role == 'User'">
+          <a class="nav-link" routerLink="/dashboard/mentors/0/00.00/00.00">Search Trainings </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard/current">Current Trainings</a>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link"  routerLink="/dashboard/current">Current Trainings</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" [routerLinkActive]="['active']">
             <a class="nav-link" routerLink="/dashboard/completed">Completed Trainings</a>
           </li>
-        <li class="nav-item" *ngIf="role == 'Mentor'">
+        <li class="nav-item" [routerLinkActive]="['active']" *ngIf="role == 'Mentor'">
             <a class="nav-link" routerLink="/dashboard/edit">Edit Skills</a>
         </li>
+        <li class="nav-item" [routerLinkActive]="['active']" *ngIf="role == 'Mentor'">
+          <a class="nav-link" routerLink="/dashboard/pay" >Payments</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']" *ngIf="role == 'Mentor'">
+        <a class="nav-link" routerLink="/dashboard/transaction" >Transaction History</a>
+    </li>
        
       </ul>
       <ul class="navbar-nav mr-auto" *ngIf="role == 'Admin'">
-        <li class="nav-item active">
-            <a class="nav-link" routerLink="/dashboard">Dashboard <span class="sr-only">(current)</span></a>
+        <li class="nav-item active" [routerLinkActive]="['active']">
+            <a class="nav-link"  routerLink="/dashboard">Admin Dashboard <span class="sr-only">(current)</span></a>
           </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/dashboard/users">User Managament</a>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link"  routerLink="/dashboard/users">User Managament</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" [routerLinkActive]="['active']">
         <a class="nav-link" routerLink="/dashboard/technologies">Technologies and Fee</a>
       </li>
      

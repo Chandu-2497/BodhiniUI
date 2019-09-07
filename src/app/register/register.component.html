@@ -2,8 +2,8 @@
 <div class="bg-img-reg">
 <h2 style="margin:30px;">{{title}}</h2>
 <form [formGroup]="userForm" (ngSubmit)="submit()">
-  <a href="home">Home</a>&nbsp;&nbsp;&nbsp;
-  <a href="mentor">Register as mentor</a>
+  <a routerLink="/home">Home</a>
+  
     <div class="form-group">
         <label for="firstName">First Name</label>
         <input type="text" formControlName="firstName" class="form-control" id="firstName" aria-describedby="firstName" placeholder="Enter First Name"

@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrainingComponent implements OnInit {
 
+  role: string;
+  currentUser;
   constructor() { }
 
   ngOnInit() {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.role = this.currentUser.role;
   }
 
 }

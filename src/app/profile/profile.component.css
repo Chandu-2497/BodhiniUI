@@ -1,0 +1,19 @@
+.home,.card{
+    margin:10px;
+    padding:20px;
+}
+.avatar.border-gray{
+    border-radius: 50%;
+    margin-top:-100px;
+   
+    position: relative;
+}
+.image img{
+    position: relative;
+    left: -20px;
+    top:-20px;
+}
+
+.mat-form-field{
+    width: 100%;
+}

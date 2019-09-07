@@ -17,7 +17,7 @@
         <th [ngClass]="{'blocked': !user.isActive }"  scope="row"><img class="avatar" alt="Avatar" src="../../assets/images/face-6.jpg"></th>
         <td>{{user.username}}</td>
         <td>{{user.firstName}}</td>
-        <td>{{user.role == '2' ? 'User' : (user.role == '3' ? 'Mentor' : 'Admin') }}</td>
+        <td>{{user.role}}</td>
         <td *ngIf="user.isActive">
             <!-- <button type="button" class="btn btn-primary" (click)="edit(user)"> -->
             <i class="fa fa-ban" (click) = "block(user)"><span class="tooltiptext">Block User</span></i>

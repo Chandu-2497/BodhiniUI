@@ -50,4 +50,9 @@ addtechnology(tech: any){
     return this.http.post('/technologies/add',tech);
 }
 
+getMentorCalendar(){
+    return this.http.get('/mentorCalendar');
+
+}
+
 }

@@ -7,7 +7,9 @@ import { ProfileComponent } from '../profile/profile.component';
 import { TrainingComponent } from '../training/training.component';
 import { CurrentTrainingsComponent } from '../current-trainings/current-trainings.component';
 import { MentorSearchComponent } from '../mentor-search/mentor-search.component';
-import { HomeGuard } from '../guards/home.guard';
+import { PaymentsComponent } from '../payments/payments.component';
+import { TransactionComponent } from '../transaction/transaction.component';
+
 
  const routes: Routes = [
      {
@@ -31,12 +33,20 @@ import { HomeGuard } from '../guards/home.guard';
         component: TrainingComponent
     },
     {
-        path: 'mentors/:technology',
+        path: 'mentors/:technology/:from/:to',
         component: MentorSearchComponent,
     },
     {
+        path: 'pay',
+        component: PaymentsComponent
+    },
+    {
+        path: 'transaction',
+        component: TransactionComponent
+    },
+    {
         path:'**',
-        redirectTo: 'login'
+        redirectTo: 'dashboard'
     },
     {
         path: 'current',

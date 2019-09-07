@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../service/authentication.service';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -14,10 +14,13 @@ import { ApiService } from '../api.service';
 })
 export class NavbarComponent implements OnInit {
 
+  path: any;
   user: any;
   isLogin: boolean = false;
   role: string ='Admin';
   technology = new FormControl;
+  from = new FormControl;
+  to = new FormControl;
   mentorSearchForm : FormGroup;
   technologies: any[] ;
   // = [{id:1,name:'Spring Boot'},{id:2,name:'Angular'},{id:3,name:'Core Java'},{id:4,name:'Advanced Java'}];
@@ -26,6 +29,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(private router: Router,
     private formBuild: FormBuilder,
+    private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
     private apiService: ApiService
     ) { }
@@ -34,8 +38,14 @@ export class NavbarComponent implements OnInit {
     this.getUser();
     this.technologies = this.apiService.getAllTechnologies();
     this.mentorSearchForm = this.formBuild.group({
-      technology: ['']
+      technology: [''],
+      from: [''],
+      to: ['']
     })
+
+    this.path = this.router.url
+    console.log(this.path);
+  
     
   }
 
@@ -51,9 +61,9 @@ export class NavbarComponent implements OnInit {
   search(){
     // this.technology.setValue(this.technologies.find(item => item == this.technology.value).id)
     if(this.isLogin)
-      this.router.navigate(['/dashboard/mentors',this.technology.value]);
+      this.router.navigate(['/dashboard/mentors',this.technology.value,this.from.value,this.to.value]);
     else 
-    this.router.navigate(['/mentors',this.technology.value]);
+    this.router.navigate(['/mentors',this.technology.value,this.from.value,this.to.value]);
   }
 
   logout(){

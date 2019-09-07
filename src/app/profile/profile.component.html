@@ -8,24 +8,18 @@
                                 <h4 class="title">Edit Profile</h4>
                             </div>
                             <div class="content">
-                                <form>
+                                <form [formGroup]="Skills" (ngSubmit)="submit()" >    
                                     <div class="row">
-                                        <div class="col-md-5">
+                                        <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Company (disabled)</label>
-                                                <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
+                                                <label>Name</label>
+                                                <input type="text" class="form-control" disabled placeholder="Name" [value]="currentUser.firstName+' '+currentUser.lastName">
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Username</label>
-                                                <input type="text" class="form-control" placeholder="Username" value="michael23">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address</label>
-                                                <input type="email" class="form-control" placeholder="Email">
+                                                <input type="text" class="form-control" disabled placeholder="Username" [value]="currentUser.username">
                                             </div>
                                         </div>
                                     </div>
@@ -34,53 +28,58 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>First Name</label>
-                                                <input type="text" class="form-control" placeholder="Company" value="Mike">
+                                                <input type="text" class="form-control" disabled placeholder="First Name" [value]="currentUser.firstName">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                                                <input type="text" class="form-control" disabled placeholder="Last Name" [value]="currentUser.lastName">
                                             </div>
                                         </div>
                                     </div>
+        
+                                   
+        
+                                  
         
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                                <label for="exampleInputTechnology">Technologies</label>
+                                                <mat-form-field>
+                                                  
+                                                  <mat-select formControlName="name" multiple>
+                                                    <mat-option *ngFor="let tech of technologyList" [value]="tech.name">{{tech.name}}</mat-option>
+                                                  </mat-select>
+                                                  <mat-error *ngIf="(submitted || f.name.touched) && f.name.errors">
+                                                      Technologies field is <strong>required</strong>
+                                                    </mat-error>
+                                                </mat-form-field>
+                                               
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="toc">TOC</label>
+                                                <input type="text" formControlName="toc" class="form-control" id="toc" aria-describedby="TOC" placeholder="TOC" 
+                                                [ngClass] = "{ 'is-invalid' : (submitted || f.toc.touched) && f.toc.errors}">
+                                                <div *ngIf="(submitted || f.toc.touched) && f.toc.errors " class="invalid-feedback">
+                                                  <div *ngIf="(submitted || f.toc.touched) && f.toc.errors.required">Last Name is required</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>City</label>
-                                                <input type="text" class="form-control" placeholder="City" value="Mike">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Country</label>
-                                                <input type="text" class="form-control" placeholder="Country" value="Andrew">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input type="number" class="form-control" placeholder="ZIP Code">
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>About Me</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
-                                            </div>
+                                              <div class="form-group">
+                                                <label for="exampleInputFacilities">Facilities</label>
+                                                <mat-form-field>
+                                                 
+                                                  <mat-select formControlName="prerequisites" multiple>
+                                                    <mat-option *ngFor="let fac of facilitiesList" [value]="fac.name">{{fac.name}}</mat-option>
+                                                  </mat-select>
+                                                 
+                                                    <mat-error *ngIf="(submitted || f.prerequisites.touched) && f.prerequisites.errors">
+                                                      Facilities field is <strong>required</strong>
+                                                    </mat-error>
+                                                </mat-form-field>
+                                               
+                                              </div>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
@@ -92,15 +91,15 @@
                     <div class="col-md-4">
                         <div class="card card-user">
                             <div class="image">
-                                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+                                <img width="350" height="270" src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
                             </div>
-                            <div class="content">
+                            <div class="content" align="center">
                                 <div class="author">
                                     <a href="#">
-                                        <img class="avatar border-gray" src="../../assets/images/face-6.jpg" alt="..."/>
+                                        <img class="avatar border-gray" src="../../assets/images/face-6.jpg" alt="Profile"/>
         
-                                        <h4 class="title">Mike Andrew<br />
-                                            <small>michael24</small>
+                                        <h4 class="title">Viju<br />
+                                            <small>V</small>
                                         </h4>
                                     </a>
                                 </div>
@@ -109,12 +108,12 @@
                                     I'm in that two seat Lambo"
                                 </p>
                             </div>
-                            <hr>
+                            <!-- <hr>
                             <div class="text-center">
                                 <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
                                 <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
                                 <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

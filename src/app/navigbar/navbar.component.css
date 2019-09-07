@@ -7,6 +7,9 @@
     padding:2px;
     margin:2px;
 }
+input {
+    width:80px;
+}
 
 /* .fixed-nav{
     width:100%;

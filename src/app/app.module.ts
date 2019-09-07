@@ -21,10 +21,9 @@ import { Capitalize } from './pipes/capitalize';
 import { StudentsService } from './service/students.service';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
-import { TrainingComponent } from './training/training.component';
+
 import { MentorSkillsComponent } from './mentor-skills/mentor-skills.component';
 import { MentorCalendarComponent } from './mentor-calendar/mentor-calendar.component';
-import { MentorSearchComponent } from './mentor-search/mentor-search.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthenticationService } from './service/authentication.service';
 import { UserService } from './service/user.service';
@@ -38,11 +37,10 @@ import { ApiService } from './api.service';
 import { HomeGuard } from './guards/home.guard';
 
 import { UserMgtComponent } from './user-mgt/user-mgt.component';
-
 import { NotificationsComponent } from './notifications/notifications.component';
 import { MentorRegisterComponent } from './mentor-register/mentor-register.component';
 import { HomeModule } from './home/home.module';
-
+import { ViewProfileComponent } from './view-profile/view-profile.component';
 
 
 
@@ -61,6 +59,7 @@ import { HomeModule } from './home/home.module';
     UserMgtComponent,
     NotificationsComponent,
     MentorRegisterComponent,
+
    
   ],
   imports: [
@@ -80,7 +79,7 @@ import { HomeModule } from './home/home.module';
     TooltipModule,
     PopoverModule,
     ButtonsModule   ,
-    HomeModule              
+    HomeModule
   ],
   providers: [
     StudentsService,
@@ -94,6 +93,7 @@ import { HomeModule } from './home/home.module';
     fakeBackendProvider,
     ApiService
   ],
-  bootstrap: [AppComponent]
+  entryComponents: [ViewProfileComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

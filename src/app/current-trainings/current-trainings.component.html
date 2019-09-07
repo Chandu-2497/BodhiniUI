@@ -1,1 +1,87 @@
-<p>current-trainings works!</p>
+
+<h2 style="margin:30px;" *ngIf="role == 'Mentor'">Mentor Current Trainings</h2>
+<div *ngIf="role == 'Mentor'">
+<table style="width:70%" align="center" class="table table-hover">
+    <thead class="thead-dark">
+            <tr>
+                    <th scope="col">Technology</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Completion Date</th>
+                    <th scope="col">Status</th>
+                </tr>
+    </thead>
+    
+    <tr>
+        
+        <td>Spring Boot</td>
+        <td>Chandrika</td>
+        <td>24/01/2019</td>
+       <td><span class="blue-dot"></span>&nbsp; Confirmed</td>
+
+    </tr> 
+    <tr>
+            
+            <td>Angular</td>
+            <td>Aishwarya</td>
+            <td>12/07/2018</td>
+            <td><span class="yellow-dot"></span>&nbsp; In Progress</td>
+       
+        </tr>     
+        <tr>
+            
+                <td>Spring</td>
+                <td>John</td>
+                <td>12/07/2018</td>
+                <td><span class="green-dot"></span>&nbsp; Completed</td>
+           
+            </tr> 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+</table>
+</div>
+
+<h2 style="margin:30px; background-color: white" *ngIf="role == 'User'">Current Trainings<br/></h2>
+           
+                  <div class="row" *ngIf="role == 'User'">
+                  <div class="card">
+                      <div class="card-title"><h5>Spring Boot &nbsp;&nbsp;&nbsp;<i class="fa fa-edit"><span class="tooltiptext">Edit Status</span></i></h5> </div>
+                      <div class="card-body">
+                        <div class = "card-text"><p><b>Mentor:</b> Chandrika P<br/><b>End Date: </b>24-12-2019</p></div>
+                        <div class="progress">
+                                <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
+                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                                  25%
+                                </div>  
+                              </div>
+
+                      </div>
+                  </div>
+                  <div class="card">
+                        <div class="card-title"><h5>Angular &nbsp;&nbsp;&nbsp;<i class="fa fa-edit"><span class="tooltiptext">Edit Status</span></i></h5> </div>
+                        <div class="card-body">
+                          <div class = "card-text"><p><b>Mentor:</b> Aishwarya<br/><b>End Date:</b> 28-09-2019</p></div>
+                          <div class="progress">
+                                  <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
+                                  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                                    50%
+                                  </div>  
+                                </div>
+                               
+                        </div>
+                    </div>
+                    <div class="card">
+                            <div class="card-title"><h5>Core JAVA &nbsp;&nbsp;&nbsp;<i class="fa fa-edit"><span class="tooltiptext">Edit Status</span></i></h5> </div>
+                            <div class="card-body">
+                              <div class = "card-text"><p><b>Mentor:</b>Renuka<br/><b>End Date:</b> 24-09-2019</p></div>
+                              <div class="progress">
+                                      <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
+                                      aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%">
+                                        75%
+                                      </div>  
+                                    </div>
+                                   
+                            </div>
+                        </div>
+                        
+                        </div>
+                  

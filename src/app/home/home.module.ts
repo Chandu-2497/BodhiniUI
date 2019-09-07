@@ -12,7 +12,11 @@ import { TrainingComponent } from '../training/training.component';
 import { CurrentTrainingsComponent } from '../current-trainings/current-trainings.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { MentorSearchComponent } from '../mentor-search/mentor-search.component';
-import { AuthGuard } from '../guards/auth.guard';
+import { PaymentsComponent } from '../payments/payments.component';
+import { TransactionComponent } from '../transaction/transaction.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ViewProfileComponent } from '../view-profile/view-profile.component';
+// import { AuthGuard } from '../guards/auth.guard';
 
 
 
@@ -25,7 +29,10 @@ import { AuthGuard } from '../guards/auth.guard';
       TrainingComponent,
       CurrentTrainingsComponent,
       ProfileComponent,
-      MentorSearchComponent
+      MentorSearchComponent,
+      PaymentsComponent,
+      TransactionComponent,
+      ViewProfileComponent
   ],
   imports: [
     HomeRoutingModule,
@@ -33,9 +40,10 @@ import { AuthGuard } from '../guards/auth.guard';
     MDBBootstrapModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
-  exports: [NavbarComponent,MentorSearchComponent,HomeComponent],
+  exports: [NavbarComponent,MentorSearchComponent],
   bootstrap: []
 })
 export class HomeModule { }

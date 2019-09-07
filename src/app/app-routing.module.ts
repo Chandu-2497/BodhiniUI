@@ -1,17 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component'
-import { Test2Component } from './test2/test2.component';
 import { LoginComponent } from './login/login.component';
 import { MentorSearchComponent } from './mentor-search/mentor-search.component';
-import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
 import { HomepageComponent } from './homepage/homepage.component';
-import { HomeGuard } from './guards/home.guard';
 import { MentorRegisterComponent } from './mentor-register/mentor-register.component';
-import { UsersComponent } from './users/users.component';
-import { TechnologiesComponent } from './technologies/technologies.component';
-import { HomeModule} from './home/home.module';
 
 
 const routes: Routes = [
@@ -40,8 +34,8 @@ const routes: Routes = [
     component: MentorRegisterComponent
   },
   {
-    path:'mentors/:technology',
-    component: MentorRegisterComponent
+    path:'mentors/:technology/:from/:to',
+    component: MentorSearchComponent
   },
   {
     path:'login',
