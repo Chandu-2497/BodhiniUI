@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { Mentor } from '../models/mentor';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +54,12 @@ addtechnology(tech: any){
 getMentorCalendar(){
     return this.http.get('/mentorCalendar');
 
+}
+
+search(tech: any,from: any,to: any){
+    let url = environment.url+(`search/${tech}/${from}/${to}`)
+    console.log(url);
+    return this.http.get(url);
 }
 
 }

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatRadioModule} from '@angular/material/radio';
@@ -41,6 +41,10 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { MentorRegisterComponent } from './mentor-register/mentor-register.component';
 import { HomeModule } from './home/home.module';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { RequestOptions } from '@angular/http';
+import { AuthRequestOptions } from './service/authrequestoptions.service';
+import { AuthErrorHandler } from './service/autherrorhandler.service';
+import { AuthService } from './service/auth.service';
 
 
 
@@ -88,9 +92,22 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
     AlertService,
     AuthenticationService,
     UserService,
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor , multi: true}  ,
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    fakeBackendProvider,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthService , multi: true}  ,
+    // {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    // fakeBackendProvider,
+    
+      {
+        provide: RequestOptions, 
+        useClass: AuthRequestOptions
+      },
+
+      // {
+      //   provide: ErrorHandler, 
+      //   useClass: AuthErrorHandler
+      // },
+
+      // AuthService,
+    
     ApiService
   ],
   entryComponents: [ViewProfileComponent],

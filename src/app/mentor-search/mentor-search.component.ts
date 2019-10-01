@@ -5,6 +5,7 @@ import { ApiService } from '../api.service';
 import {MatDialog} from '@angular/material/dialog';
 import { ProfileComponent } from '../profile/profile.component';
 import { ViewProfileComponent } from '../view-profile/view-profile.component';
+import { TechnologiesComponent } from '../technologies/technologies.component';
 
 @Component({
   selector: 'app-mentor-search',
@@ -15,7 +16,7 @@ export class MentorSearchComponent implements OnInit {
 
   profileData: any;
   mentorCalendar: any = [];
-  searchResults: any[] = [];
+  searchResults: any;
   mentorskills: any[];
   technology: any;
   techname: string = "";
@@ -33,17 +34,17 @@ export class MentorSearchComponent implements OnInit {
     if(localStorage.getItem('currentUser')){
 this.isLogin = true;
     }
-    else this.search();
+    // else this.search();
     this.router.paramMap.subscribe(params => {
       this.technology = params.get('technology');
-      if(this.technology == 0){
-        this.techname = 'All Trainings';
-        this.getAll();
-      }
-      else{
-       
+      // if(this.technology == 0){
+      //   this.techname = 'All Trainings';
+      //   this.getAll();
+      // }
+      // else{
+       if(this.technology.value !== null)
         this.search();
-      }
+      // }
     
     // console.log(this.techname)
     })
@@ -65,32 +66,41 @@ this.isLogin = true;
   }
 
   search(){
-
-    this.service.getAllMentors().subscribe(res => {
-      this.mentorskills = res;
-      // console.log(this.mentorskills)
-      this.router.paramMap.subscribe(params => {
-        this.technology = params.get('technology');
-        this.from = params.get('from');
-        this.to = params.get('to');
-    this.techname = this.apiService.getAllTechnologies().find(ite => ite.id == this.technology  ).name;
+    this.router.paramMap.subscribe(params => {
+          this.technology = params.get('technology');
+          this.from = params.get('from');
+          this.to = params.get('to');
+          console.log(this.technology);
+    this.service.search(this.technology,this.from,this.to).subscribe(res => {
+     
+     if(res) this.searchResults = (res);
+    })
+  });
+    // this.service.getAllMentors().subscribe(res => {
+    //   this.mentorskills = res;
+    //   // console.log(this.mentorskills)
+    //   this.router.paramMap.subscribe(params => {
+    //     this.technology = params.get('technology');
+    //     this.from = params.get('from');
+    //     this.to = params.get('to');
+    // this.techname = this.apiService.getAllTechnologies().find(ite => ite.id == this.technology  ).name;
         
-        this.service.getAll().subscribe(res => {
+    //     this.service.getAll().subscribe(res => {
           
-          this.mentors = res;
-          this.service.getMentorCalendar().subscribe(r => {
-            this.mentorCalendar = r;
-            this.searchResults = [];
-          // console.log(this.mentors)
-      this.mentorskills.forEach(element => {
+    //       this.mentors = res;
+    //       this.service.getMentorCalendar().subscribe(r => {
+    //         this.mentorCalendar = r;
+    //         this.searchResults = [];
+    //       // console.log(this.mentors)
+    //   this.mentorskills.forEach(element => {
         
-        if(element.name.search(this.techname) !== -1 && this.mentorCalendar.find(e => e.mentorId==element.mentorId && e.from == this.from && e.to == this.to)){
-          this.searchResults.push(this.mentors.find(ment => ment.id == element.mentorId));
-        }
-      });
-    })
-      })
-    })
-    })
+    //     if(element.name.search(this.techname) !== -1 && this.mentorCalendar.find(e => e.mentorId==element.mentorId && e.from == this.from && e.to == this.to)){
+    //       this.searchResults.push(this.mentors.find(ment => ment.id == element.mentorId));
+    //     }
+    //   });
+    // })
+    //   })
+    // })
+    // })
   }
 }
