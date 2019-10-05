@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../service/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { TechnologyService } from '../service/technology.service';
 
 @Component({
   selector: 'app-technologies',
@@ -11,14 +11,14 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class TechnologiesComponent implements OnInit {
 
   technologies: any[]= [];
-  constructor(private userService: UserService,
+  constructor(private service: TechnologyService,
     private toastr: ToastrService) { }
     techForm: FormGroup;
   ngOnInit() {
     this.techForm = new FormGroup({
       id: new FormControl(""),
       name: new FormControl('', Validators.required),
-      url: new FormControl('')
+      // url: new FormControl('')
     });
     this.getTechnologies();
 
@@ -30,15 +30,15 @@ export class TechnologiesComponent implements OnInit {
     return this.techForm.get('name');
   }
 
-  get url() {
-    return this.techForm.get('url');
-  }
+  // get url() {
+  //   return this.techForm.get('url');
+  // }
 
   add(){
     if(this.techForm.invalid){
       return;
     }
-    this.userService.addtechnology(this.techForm.value).subscribe(
+    this.service.addtechnology(this.techForm.value).subscribe(
       data => {
         this.toastr.success("Done","Technology added successfully");
       
@@ -57,21 +57,12 @@ export class TechnologiesComponent implements OnInit {
   }
 
   remove(tech : any){
-    this.userService.removeTechnology(tech.id).subscribe(res => {
+    this.service.removeTechnology(tech.id).subscribe(res => {
      
         this.toastr.success("Deleted","Technology deleted successfully");
       
     })
     this.getTechnologies();
   }
-
-
-  // add(tech: any){
-  //   this.userService.addtechnology(tech).subscribe(res => {
-  //     if(res){
-  //       this.getTechnologies();
-  //     }
-  //   })
-  // }
 
 }

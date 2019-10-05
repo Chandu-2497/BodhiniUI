@@ -22,20 +22,20 @@
         </div>
         <div class="form-group">
           <label for="exampleInputPhone">Phone</label>
-          <input type="tel" class="form-control" formControlName="phone" id="exampleInputPhone" placeholder="Phone" 
-          [ngClass] = "{ 'is-invalid' : (submitted || f.phone.touched) && f.phone.errors}" minlength="10" maxlength="10">
-          <div *ngIf="(submitted || f.phone.touched) && f.phone.errors" class="invalid-feedback">
-            <div *ngIf="(submitted || f.phone.touched) && f.phone.errors.required">Phone is required</div>
-            <div *ngIf="(submitted || f.phone.touched) && (f.phone.errors.minlength || f.phone.errors.maxlength)">Invalid Phone number!</div>
+          <input type="tel" class="form-control" formControlName="contactNumber" id="exampleInputPhone" placeholder="Phone" 
+          [ngClass] = "{ 'is-invalid' : (submitted || f.contactNumber.touched) && f.contactNumber.errors}" minlength="10" maxlength="10">
+          <div *ngIf="(submitted || f.contactNumber.touched) && f.contactNumber.errors" class="invalid-feedback">
+            <div *ngIf="(submitted || f.contactNumber.touched) && f.contactNumber.errors.required">Phone is required</div>
+            <div *ngIf="(submitted || f.contactNumber.touched) && (f.contactNumber.errors.minlength || f.contactNumber.errors.maxlength)">Invalid Phone number!</div>
           </div>
         </div>
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
-      <input type="email" formControlName="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
-      [ngClass] = "{ 'is-invalid' : (submitted || f.username.touched) && f.username.errors}">
-      <div *ngIf="(submitted || f.username.touched) && f.username.errors" class="invalid-feedback">
-        <div *ngIf="(submitted || f.username.touched) && f.username.errors.required">User Name is required</div>
-        <div *ngIf="(submitted || f.username.touched) && f.username.errors.email">Email Format is incorrect</div>
+      <input type="email" formControlName="userName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
+      [ngClass] = "{ 'is-invalid' : (submitted || f.userName.touched) && f.userName.errors}">
+      <div *ngIf="(submitted || f.userName.touched) && f.userName.errors" class="invalid-feedback">
+        <div *ngIf="(submitted || f.userName.touched) && f.userName.errors.required">User Name is required</div>
+        <div *ngIf="(submitted || f.userName.touched) && f.userName.errors.email">Email Format is incorrect</div>
       </div>
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>

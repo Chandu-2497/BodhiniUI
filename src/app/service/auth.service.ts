@@ -8,10 +8,10 @@ export const TOKEN_NAME: string = 'jwt_token';
 @Injectable()
 export class AuthService {
 
-  private url: string = environment.url;
-  private headers = new Headers({ 'Content-Type': 'application/json' });
+  // private url: string = environment.url;
+  // private headers = new Headers({ 'Content-Type': 'application/json' });
 
-  constructor(private http: Http) { }
+  constructor() { }
 
   getToken(): string {
     return localStorage.getItem(TOKEN_NAME);
@@ -40,11 +40,11 @@ export class AuthService {
     return !(date.valueOf() > new Date().valueOf());
   }
 
-  login(user): Promise<string> {
-    return this.http
-      .post(`${this.url}login`, JSON.stringify(user), { headers: this.headers })
-      .toPromise()
-      .then(res => res.text());
-  }
+  // login(user): Promise<string> {
+  //   return this.http
+  //     .post(`${this.url}login`, JSON.stringify(user), { headers: this.headers })
+  //     .toPromise()
+  //     .then(res => res.text());
+  // }
 
 }

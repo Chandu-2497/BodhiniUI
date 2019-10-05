@@ -13,12 +13,9 @@ import { ModalModule, TooltipModule, PopoverModule, ButtonsModule, MDBBootstrapM
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TestcompComponent } from './testcomp/testcomp.component';
-import { Test2Component } from './test2/test2.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { Capitalize } from './pipes/capitalize';
-import { StudentsService } from './service/students.service';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 
@@ -45,14 +42,17 @@ import { RequestOptions } from '@angular/http';
 import { AuthRequestOptions } from './service/authrequestoptions.service';
 import { AuthErrorHandler } from './service/autherrorhandler.service';
 import { AuthService } from './service/auth.service';
+import { SearchService } from './service/search.service';
+import { TrainingService } from './service/training.service';
+import { TechnologyService } from './service/technology.service';
+import { PaymentService } from './service/payment.service';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestcompComponent,
-    Test2Component,
+    
     RegisterComponent,
     LoginComponent,
     Capitalize,
@@ -86,29 +86,28 @@ import { AuthService } from './service/auth.service';
     HomeModule
   ],
   providers: [
-    StudentsService,
     AuthGuard,
     HomeGuard,
     AlertService,
     AuthenticationService,
     UserService,
-    {provide: HTTP_INTERCEPTORS, useClass: AuthService , multi: true}  ,
-    // {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    // {provide: , useClass: AuthService , multi: true}  ,
+    // {provide: HTTP, useClass: ErrorInterceptor, multi: true},
     // fakeBackendProvider,
-    
       {
         provide: RequestOptions, 
         useClass: AuthRequestOptions
       },
-
-      // {
-      //   provide: ErrorHandler, 
-      //   useClass: AuthErrorHandler
-      // },
-
-      // AuthService,
-    
-    ApiService
+      {
+        provide: ErrorHandler, 
+        useClass: AuthErrorHandler
+      },
+      SearchService,
+      TrainingService,
+      TechnologyService,
+      PaymentService,
+      AuthService,
+      ApiService
   ],
   entryComponents: [ViewProfileComponent],
   bootstrap: [AppComponent],

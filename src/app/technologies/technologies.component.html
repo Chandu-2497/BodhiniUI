@@ -76,7 +76,7 @@
     </thead>
     
     <tr *ngFor="let tech of technologies">
-        <th scope="row"><img class="avatar" alt="logo" src="{{tech.url}}"></th>
+        <!-- <th scope="row"><img class="avatar" alt="logo" src="{{tech.url}}"></th> -->
         <td>{{tech.name}}</td>
         <td>{{tech.fee}}</td>
         <td> <i class="fa fa-ban" (click) = "remove(tech)"><span class="tooltiptext">Remove Technology</span></i></td>
