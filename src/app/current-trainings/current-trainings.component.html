@@ -14,9 +14,9 @@
     <tr *ngFor="let train of Trainings">
         
         <td>{{train.skillName}}</td>
-        <td>{{train.mentorName}}</td>
+        <td>{{train.userName}}</td>
         <td>{{train.endDate}}</td>
-       <td><span class="blue-dot"></span>&nbsp; {{train.status}}</td>
+       <td><span [ngClass]="{'blue-dot': train.progress == 0,'yello-dot': train.progress == 25,'green-dot': train.progress == 75}"></span>&nbsp; {{train.status}}</td>
 
     </tr> 
    
@@ -34,39 +34,13 @@
                         <div class = "card-text"><p><b>Mentor:</b> {{train.mentorName}}<br/><b>End Date: </b>{{train.endDate}}</p></div>
                         <div class="progress">
                                 <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
-                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width:'{{train.progress}}%'">
+                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" [style.width.%]="train.progress">
                                   {{train.progress}}
                                 </div>  
                               </div>
 
                       </div>
                   </div>
-                  <!-- <div class="card">
-                        <div class="card-title"><h5>Angular &nbsp;&nbsp;&nbsp;<i class="fa fa-edit"><span class="tooltiptext">Edit Status</span></i></h5> </div>
-                        <div class="card-body">
-                          <div class = "card-text"><p><b>Mentor:</b> Aishwarya<br/><b>End Date:</b> 28-09-2019</p></div>
-                          <div class="progress">
-                                  <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
-                                  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
-                                    50%
-                                  </div>  
-                                </div>
-                               
+             
                         </div>
-                    </div>
-                    <div class="card">
-                            <div class="card-title"><h5>Core JAVA &nbsp;&nbsp;&nbsp;<i class="fa fa-edit"><span class="tooltiptext">Edit Status</span></i></h5> </div>
-                            <div class="card-body">
-                              <div class = "card-text"><p><b>Mentor:</b>Renuka<br/><b>End Date:</b> 24-09-2019</p></div>
-                              <div class="progress">
-                                      <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
-                                      aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width:75%">
-                                        75%
-                                      </div>  
-                                    </div>
-                                   
-                            </div>
-                        </div> -->
-                        
-                        </div>
-                  
+                   <mat-card *ngIf="Trainings.length == 0">Training Not Yet Started</mat-card>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TechnologyService } from '../service/technology.service';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-technologies',
@@ -10,14 +11,15 @@ import { TechnologyService } from '../service/technology.service';
 })
 export class TechnologiesComponent implements OnInit {
 
-  technologies: any[]= [];
-  constructor(private service: TechnologyService,
+  technologies: any = [];
+  constructor(private service: TechnologyService,private apiService: ApiService,
     private toastr: ToastrService) { }
     techForm: FormGroup;
   ngOnInit() {
     this.techForm = new FormGroup({
       id: new FormControl(""),
       name: new FormControl('', Validators.required),
+      fee: new FormControl('',Validators.required)
       // url: new FormControl('')
     });
     this.getTechnologies();
@@ -30,9 +32,9 @@ export class TechnologiesComponent implements OnInit {
     return this.techForm.get('name');
   }
 
-  // get url() {
-  //   return this.techForm.get('url');
-  // }
+  get fee() {
+    return this.techForm.get('fee');
+  }
 
   add(){
     if(this.techForm.invalid){
@@ -40,9 +42,13 @@ export class TechnologiesComponent implements OnInit {
     }
     this.service.addtechnology(this.techForm.value).subscribe(
       data => {
+        if(data){
         this.toastr.success("Done","Technology added successfully");
       
         this.getTechnologies();
+        this.apiService.setAllTechnologies();
+        this.techForm.reset();
+        }
       },
       error => {
         this.toastr.error("Failed",error);
@@ -53,16 +59,23 @@ export class TechnologiesComponent implements OnInit {
   }
 
   getTechnologies(){
-    this.technologies = JSON.parse(localStorage.getItem('technologies'));;
+    this.service.getAllTechnologies().subscribe(res => {
+      if(res){
+        this.technologies = res;
+      }
+    });
   }
 
   remove(tech : any){
     this.service.removeTechnology(tech.id).subscribe(res => {
-     
+     if(res){
         this.toastr.success("Deleted","Technology deleted successfully");
-      
+        this.getTechnologies();
+        this.apiService.setAllTechnologies();
+        this.techForm.reset();
+     }
     })
-    this.getTechnologies();
+    
   }
 
 }

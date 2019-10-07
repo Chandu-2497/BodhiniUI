@@ -15,8 +15,8 @@ export class ApiService {
     // {id:6,name:".NET",url:"../../assets/images/net.jpg",fee:7000}
    ]
   constructor(private techservice: TechnologyService) { 
-
-   this.getAllTechnologies();
+this.setAllTechnologies();
+  //  this.getAllTechnologies();
      
     
   }
@@ -38,12 +38,13 @@ export class ApiService {
   }
 
   getAllTechnologies(){
+    this.setAllTechnologies();
     if(localStorage.getItem('technologies')){
       return JSON.parse(localStorage.getItem('technologies'));
     }
-    else{
-      localStorage.setItem('technologies',JSON.stringify(this.technologies));
-      return JSON.parse(localStorage.getItem('technologies'));
-    }
+    // else{
+    //   localStorage.setItem('technologies',JSON.stringify(this.technologies));
+    //   return JSON.parse(localStorage.getItem('technologies'));
+    // }
   }
 }

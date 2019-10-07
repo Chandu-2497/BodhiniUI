@@ -89,7 +89,7 @@ export class MentorRegisterComponent implements OnInit {
        .pipe(first())
      .subscribe(
        data => {
-         let result = data;
+         let result: any = data;
         //  this.alertService.success('Registration Successfull',true);
         this.toastr.success("Success","Registration Successfull")
         this.skillForm['mentorid'] = JSON.parse(result.id);

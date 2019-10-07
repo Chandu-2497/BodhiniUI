@@ -10,11 +10,11 @@ export class TechnologyService {
   constructor(private http: HttpClient) { }
 
     removeTechnology(id: number) {
-        return this.http.delete(`${environment.url}remove-tech/${id}`);
+        return this.http.delete(`${environment.url}technology/${id}`,{responseType: 'text'});
     }
 
     addtechnology(tech: any){
-        return this.http.post(`${environment.url}technologies/add`,tech);
+        return this.http.post(`${environment.url}technology`,tech,{responseType: 'text'});
     }
 
     updateTechnology(tech : any){

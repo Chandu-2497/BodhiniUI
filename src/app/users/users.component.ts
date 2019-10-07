@@ -28,17 +28,21 @@ export class UsersComponent implements OnInit {
   }
 
   block(user: any){
-    this.service.delete(user.id).subscribe(res => {
+    user.active = false;
+    this.service.update(user).subscribe(res => {
       // this.alert.success("User Blocked Successfully");
 
       this.toarstr.success("Success","User Blocked Successfully");
+      this.getUsers();
     })
     this.getUsers();
   }
 
   unblock(user: any){
-    this.service.unblock(user.id).subscribe(res => {
+    user.active = true;
+    this.service.update(user).subscribe(res => {
       this.toarstr.success("Success","User Activated Successfully");
+      this.getUsers();
     })
     this.getUsers();
   }

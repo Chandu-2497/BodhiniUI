@@ -12,15 +12,12 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getAll() {
-    return this.http.get<any[]>(`${environment.url}users`);
+    return this.http.get<any[]>(`${environment.url}user`);
 }
 
-getAllMentors(){
-    return this.http.get<any[]>(`${environment.url}mentorSkills`);
-}
 
 getById(id: number) {
-    return this.http.get(`${environment.url}users/` + id);
+    return this.http.get(`${environment.url}user/` + id);
 }
 
 register(user: any) {
@@ -32,11 +29,11 @@ registerMentor(mentor: Mentor){
 }
 
 update(user: any) {
-    return this.http.put(`${environment.url}users/${user.id}`, user);
+    return this.http.put(`${environment.url}user`, user);
 }
 
 delete(id: number) {
-    return this.http.delete(`${environment.url}users/${id}`);
+    return this.http.delete(`${environment.url}user/${id}`);
 }
 
 unblock(id: number) {

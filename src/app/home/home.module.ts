@@ -16,6 +16,7 @@ import { PaymentsComponent } from '../payments/payments.component';
 import { TransactionComponent } from '../transaction/transaction.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ViewProfileComponent } from '../view-profile/view-profile.component';
+import { MatCardModule } from '@angular/material';
 // import { AuthGuard } from '../guards/auth.guard';
 
 
@@ -39,6 +40,7 @@ import { ViewProfileComponent } from '../view-profile/view-profile.component';
     CommonModule,
     MDBBootstrapModule,
     FormsModule,
+    MatCardModule,
     ReactiveFormsModule,
     MatSelectModule,
     MatDialogModule

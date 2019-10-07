@@ -10,7 +10,7 @@ export class CurrentTrainingsComponent implements OnInit {
 
   role: string;
   currentUser: any;
-  Trainings: any;
+  Trainings: any = [];
   constructor(private service: TrainingService) { }
 
   ngOnInit() {

@@ -38,8 +38,6 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { MentorRegisterComponent } from './mentor-register/mentor-register.component';
 import { HomeModule } from './home/home.module';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
-import { RequestOptions } from '@angular/http';
-import { AuthRequestOptions } from './service/authrequestoptions.service';
 import { AuthErrorHandler } from './service/autherrorhandler.service';
 import { AuthService } from './service/auth.service';
 import { SearchService } from './service/search.service';
@@ -52,7 +50,6 @@ import { PaymentService } from './service/payment.service';
 @NgModule({
   declarations: [
     AppComponent,
-    
     RegisterComponent,
     LoginComponent,
     Capitalize,
@@ -62,7 +59,7 @@ import { PaymentService } from './service/payment.service';
     HomepageComponent,
     UserMgtComponent,
     NotificationsComponent,
-    MentorRegisterComponent,
+    MentorRegisterComponent
 
    
   ],
@@ -94,10 +91,7 @@ import { PaymentService } from './service/payment.service';
     // {provide: , useClass: AuthService , multi: true}  ,
     // {provide: HTTP, useClass: ErrorInterceptor, multi: true},
     // fakeBackendProvider,
-      {
-        provide: RequestOptions, 
-        useClass: AuthRequestOptions
-      },
+     { provide:HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
       {
         provide: ErrorHandler, 
         useClass: AuthErrorHandler
@@ -110,6 +104,6 @@ import { PaymentService } from './service/payment.service';
       ApiService
   ],
   entryComponents: [ViewProfileComponent],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

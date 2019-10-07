@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <form class="form-inline my-2 my-lg-0" *ngIf="role != 'Mentor'" [formGroup]="mentorSearchForm" (ngSubmit)="search()">
+    <form class="form-inline my-2 my-lg-0" *ngIf="role != 'Mentor' && role != 'Admin'" [formGroup]="mentorSearchForm" (ngSubmit)="search()">
         <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="technology" [(ngModel)]="technology"> -->
         <mat-form-field>
            
@@ -92,6 +92,9 @@
       <li class="nav-item" [routerLinkActive]="['active']">
         <a class="nav-link" routerLink="/dashboard/technologies">Technologies and Fee</a>
       </li>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" routerLink="/dashboard/pay" >Payments</a>
+    </li>
      
      
     </ul>

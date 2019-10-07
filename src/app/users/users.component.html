@@ -14,16 +14,16 @@
     </thead>
     
     <tr *ngFor="let user of users">
-        <th [ngClass]="{'blocked': !user.isActive }"  scope="row"><img class="avatar" alt="Avatar" src="../../assets/images/face-6.jpg"></th>
-        <td>{{user.username}}</td>
+        <th [ngClass]="{'blocked': !user.active }"  scope="row"><img class="avatar" alt="Avatar" src="../../assets/images/avatar.jpg"></th>
+        <td>{{user.userName}}</td>
         <td>{{user.firstName}}</td>
         <td>{{user.role}}</td>
-        <td *ngIf="user.isActive">
+        <td *ngIf="user.active">
             <!-- <button type="button" class="btn btn-primary" (click)="edit(user)"> -->
             <i class="fa fa-ban" (click) = "block(user)"><span class="tooltiptext">Block User</span></i>
         <!-- </button> -->
     </td>
-    <td *ngIf="!user.isActive">
+    <td *ngIf="!user.active">
             <i class="fa fa-toggle-on" (click) = "unblock(user)"><span class="tooltiptext">Activate User</span></i>
     </td>
     </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
