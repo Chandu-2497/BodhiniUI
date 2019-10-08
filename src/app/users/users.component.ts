@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UsersComponent implements OnInit {
 
-  users: User[] = [];
+  users: any = [];
   constructor(private service: UserService,
     private toarstr: ToastrService,
     private alert: AlertService) { }
@@ -23,6 +23,7 @@ export class UsersComponent implements OnInit {
 
   getUsers(){
     this.service.getAll().subscribe(res => {
+      if(res)
       this.users = res;
     })
   }

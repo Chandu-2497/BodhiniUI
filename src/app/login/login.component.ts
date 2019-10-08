@@ -4,6 +4,7 @@ import { AuthenticationService } from '../service/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../service/alert.service';
 import { first } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private toastr: ToastrService,
     private authenticationService: AuthenticationService,
     private alertService: AlertService) { }
 
@@ -53,7 +55,8 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['/dashboard']);
                 },
                 error => {
-                    this.alertService.error(error);
+                    // this.alertService.error(error);
+                    this.toastr.error("Unauthorized","Login Credentials Invalid");
                     this.loading = false;
                 });
 

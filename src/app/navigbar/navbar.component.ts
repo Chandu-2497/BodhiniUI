@@ -5,6 +5,7 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { ApiService } from '../api.service';
+import { TechnologyService } from '../service/technology.service';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class NavbarComponent implements OnInit {
   from = new FormControl;
   to = new FormControl;
   mentorSearchForm : FormGroup;
-  technologies: any[] ;
+  technologies: any = [] ;
   // = [{id:1,name:'Spring Boot'},{id:2,name:'Angular'},{id:3,name:'Core Java'},{id:4,name:'Advanced Java'}];
   filteredOptions: any[] = this.technologies;
 
@@ -30,13 +31,17 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router,
     private formBuild: FormBuilder,
     private route: ActivatedRoute,
+    private techService: TechnologyService,
     private authenticationService: AuthenticationService,
     private apiService: ApiService
     ) { }
 
   ngOnInit() {
     this.getUser();
-    this.technologies = this.apiService.getAllTechnologies();
+    this.techService.getAllTechnologies().subscribe(res => {
+      if(res)
+      this.technologies = res;
+    });
     this.mentorSearchForm = this.formBuild.group({
       technology: [''],
       from: [''],

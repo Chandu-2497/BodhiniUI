@@ -87,15 +87,16 @@ import { PaymentService } from './service/payment.service';
     HomeGuard,
     AlertService,
     AuthenticationService,
-    UserService,
+   
     // {provide: , useClass: AuthService , multi: true}  ,
     // {provide: HTTP, useClass: ErrorInterceptor, multi: true},
     // fakeBackendProvider,
      { provide:HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-      {
-        provide: ErrorHandler, 
-        useClass: AuthErrorHandler
-      },
+      // {
+      //   provide: ErrorHandler, 
+      //   useClass: AuthErrorHandler
+      // },
+      UserService,
       SearchService,
       TrainingService,
       TechnologyService,
