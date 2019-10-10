@@ -5,6 +5,9 @@ import { ApiService } from '../api.service';
 import {MatDialog} from '@angular/material/dialog';
 import { SearchService } from '../service/search.service';
 import { TrainingService } from '../service/training.service';
+import { NotificationService } from '../service/notification.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-mentor-search',
@@ -23,10 +26,14 @@ export class MentorSearchComponent implements OnInit {
   isLogin: boolean=false;
   from: any;
   to: any;
+  currentUser: any;
+  notification: FormGroup;
   constructor(private searchservice: SearchService,
+    private notiSerive: NotificationService,
     private service :UserService,
     private router: ActivatedRoute,
-    public dialog: MatDialog) { }
+    private toastr: ToastrService,
+    public dialog: MatDialog,private form:FormBuilder) { }
 
   ngOnInit() {
     
@@ -62,6 +69,37 @@ this.isLogin = true;
      if(res) this.searchResults = (res);
     })
   });
-   
   }
+
+  request(mentor: any){
+
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.notification = this.form.group({
+      // id:[''],
+      userId: [''],
+      userName: [''],
+      mentorId: [''],
+      mentorName: [''],
+      skillId: [''],
+      skillName: [''],
+      // requestDate: [''],
+      // isAccepted: [''],
+      fees: ['']
+    })
+this.notification.get('userId').setValue(this.currentUser.id);
+this.notification.get('mentorId').setValue(mentor.mentorId);
+this.notification.get('skillId').setValue(mentor.skillId);
+this.notification.get('mentorName').setValue(mentor.mentorName);
+this.notification.get('userName').setValue(this.currentUser.firstName);
+this.notification.get('skillName').setValue(mentor.skillName);
+this.notification.get('fees').setValue(mentor.fees);
+console.log(this.notification.value)
+    this.notiSerive.add(this.notification.value).subscribe(res => {
+      if(res){
+        this.toastr.success("Success","Requested Successfully");
+      }
+    });
+  }
+
+
 }

@@ -12,9 +12,10 @@ import { ApiService } from '../api.service';
 export class TechnologiesComponent implements OnInit {
 
   technologies: any = [];
+  isEdit: boolean = false;
   constructor(private service: TechnologyService,private apiService: ApiService,
     private toastr: ToastrService) { }
-    techForm: FormGroup;
+    techForm: FormGroup ;
   ngOnInit() {
     this.techForm = new FormGroup({
       id: new FormControl(""),
@@ -61,7 +62,7 @@ export class TechnologiesComponent implements OnInit {
   getTechnologies(){
     this.service.getAllTechnologies().subscribe(res => {
       if(res){
-        this.technologies = res;
+        this.technologies = res; 
       }
     });
   }
@@ -76,6 +77,27 @@ export class TechnologiesComponent implements OnInit {
      }
     })
     
+  }
+
+  edit(tech: any){
+
+    this.isEdit = false;
+    this.service.updateTechnology(this.techForm.value).subscribe(res => {
+      if(res){
+        this.toastr.success("Updated","Technology updated successfully");
+        this.getTechnologies();
+      }
+    })
+
+  }
+
+  get(tech: any){
+    this.isEdit = true;
+    this.service.getById(tech.id).subscribe(res => {
+      if(res){
+        this.techForm.patchValue(res);
+      }
+    })
   }
 
 }

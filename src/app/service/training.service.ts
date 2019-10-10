@@ -26,15 +26,19 @@ export class TrainingService {
    }
 
    addtraining(training : any){
-       return this.http.post<any>(`${environment.url}training`,training);
+       return this.http.post(`${environment.url}training`,training,{responseType: 'text'});
    }
 
    update(training: any){
-       return this.http.put<any>(`${environment.url}training`,training)
+       return this.http.put(`${environment.url}training`,training,{responseType: 'text'});
    }
 
    getAll(){
      return this.http.get(`${environment.url}training`);
+   }
+
+   getById(id: any){
+     return this.http.get(`${environment.url}training/${id}`);
    }
 
 

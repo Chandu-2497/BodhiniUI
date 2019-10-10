@@ -29,7 +29,7 @@
            
                   <div class="row" *ngIf="role == 'User'">
                   <div *ngFor="let train of Trainings" class="card">
-                      <div class="card-title"><h5>{{train.skillName}} &nbsp;&nbsp;&nbsp;<i class="fa fa-edit"><span class="tooltiptext">Edit Status</span></i></h5> </div>
+                      <div class="card-title"><h5>{{train.skillName}} &nbsp;&nbsp;&nbsp;<i class="fa fa-edit" (click)="frame.show();get(train)"><span class="tooltiptext">Edit Status</span></i></h5> </div>
                       <div class="card-body">
                         <div class = "card-text"><p><b>Mentor:</b> {{train.mentorName}}<br/><b>End Date: </b>{{train.endDate}}</p></div>
                         <div class="progress">
@@ -43,4 +43,57 @@
                   </div>
              
                         </div>
-                   <mat-card *ngIf="Trainings.length == 0">Training Not Yet Started</mat-card>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                   <!-- <mat-card *ngIf="Trainings.length == 0">Training Not Yet Started</mat-card>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          -->
+                   
+  <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+                   aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-notify modal-warning" role="document">
+                  <!--Content-->
+                  <div class="modal-content">
+                    <!--Header-->
+                    <div class="modal-header text-center">
+                      <h4 class="modal-title white-text w-100 font-weight-bold py-2">Current Training</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                      </button>
+                    </div>
+              
+                    <!--Body-->
+                    <div class="modal-body">
+                      <div class="md-form mb-5">
+                       
+                        <label for="form3">Progress Status</label>
+                        
+        
+                        <input type="number"  id="form2" class="form-control" mdbInput mdbValidate
+                        [formControl]="progress">
+                        <mdb-success
+                       >
+                        value must be either 0,25,50,75 or 100
+                      </mdb-success>
+                       
+                       
+              
+                      </div>
+              
+                      <div class="md-form">
+                          <ngb-rating [formControl]="rating"></ngb-rating>
+                        <!-- <mdb-success
+                          *ngIf="fee.valid && (fee.dirty || fee.touched)">
+                          Input valid
+                        </mdb-success> -->
+                      </div>
+                    </div>
+              
+                    <!--Footer-->
+                    <div class="modal-footer justify-content-center">
+                      
+                      <a type="button" mdbBtn color="warning" outline="true" class="waves-effect" (click)="edit();frame.hide();" mdbWavesEffect>Edit
+                        <mdb-icon far icon="paper-plane" class="ml-1"></mdb-icon>
+                      </a>
+                    </div>
+                  </div>
+                  <!--/.Content-->
+                </div>
+ </div>
+              

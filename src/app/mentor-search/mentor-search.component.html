@@ -9,21 +9,22 @@
                     <th scope="col">Ratings</th>
                     <th scope="col">No of Trainings Completed</th>
                     <th scope="col">Fee(INR)</th>
-                    <th scope="col">Action</th>
+                    <th scope="col" *ngIf="isLogin">Action</th>
                 </tr>
     </thead>
     
     <tr *ngFor="let mentor of searchResults"  >
         <th scope="row"><img class="avatar" alt="Avatar" src="../../assets/images/avatar.jpg"></th>
         <td>{{mentor.mentorName}}</td>
-        <td><span class="fa fa-star checked"></span>
+        <!-- <td><span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span></td>
+            <span class="fa fa-star"></span></td> -->
+             <ngb-rating [rate]="mentor.rating"></ngb-rating>
         <td>2</td>
         <td>{{mentor.fees}}</td>
-        <td><button type="button" class="btn btn-primary" (click)="frame.show()">Propose</button></td>
+        <td *ngIf="isLogin"><button type="button" class="btn btn-primary" (click)="request(mentor);">Propose</button></td>
     </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 </table>
 </div>
@@ -36,7 +37,7 @@
                 <th scope="col">Ratings</th>
                 <th scope="col">No of Trainings Completed</th>
                 <th scope="col">Fee(INR)</th>
-                <th scope="col">Action</th>
+                <th scope="col" *ngIf="isLogin">Action</th>
             </tr>
 </thead>
 

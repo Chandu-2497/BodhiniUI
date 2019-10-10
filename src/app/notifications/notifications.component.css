@@ -1,0 +1,24 @@
+table{
+    width:75%;
+    border: 1px solid black;
+    text-align: center;
+    background: white;
+}
+
+th{
+  background: rgb(209, 238, 209);
+}
+
+h2{
+    margin:20px;
+    text-shadow: 2px 2px 5px blue;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+caption{
+    width: 20px;
+    color: red;
+    text-align: left;
+    font-family: cursive 
+}

@@ -17,6 +17,8 @@ import { TransactionComponent } from '../transaction/transaction.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ViewProfileComponent } from '../view-profile/view-profile.component';
 import { MatCardModule } from '@angular/material';
+import { NotificationsComponent } from '../notifications/notifications.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // import { AuthGuard } from '../guards/auth.guard';
 
 
@@ -33,7 +35,8 @@ import { MatCardModule } from '@angular/material';
       MentorSearchComponent,
       PaymentsComponent,
       TransactionComponent,
-      ViewProfileComponent
+      ViewProfileComponent,
+      NotificationsComponent
   ],
   imports: [
     HomeRoutingModule,
@@ -43,7 +46,8 @@ import { MatCardModule } from '@angular/material';
     MatCardModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    NgbModule
   ],
   exports: [NavbarComponent,MentorSearchComponent],
   bootstrap: []

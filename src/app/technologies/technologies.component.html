@@ -55,7 +55,10 @@
 
       <!--Footer-->
       <div class="modal-footer justify-content-center">
-        <a type="button" mdbBtn color="warning" outline="true" class="waves-effect" (click)="add()" mdbWavesEffect>Add
+        <a *ngIf="!isEdit" type="button" mdbBtn color="warning" outline="true" class="waves-effect" (click)="add();frame.hide();" mdbWavesEffect>Add
+          <mdb-icon far icon="paper-plane" class="ml-1"></mdb-icon>
+        </a>
+        <a *ngIf="isEdit" type="button" mdbBtn color="warning" outline="true" class="waves-effect" (click)="edit();frame.hide();" mdbWavesEffect>Edit
           <mdb-icon far icon="paper-plane" class="ml-1"></mdb-icon>
         </a>
       </div>
@@ -80,7 +83,9 @@
         <!-- <th scope="row"><img class="avatar" alt="logo" src="{{tech.url}}"></th> -->
         <td>{{tech.name}}</td>
         <td>{{tech.fee}}</td>
-        <td> <i class="fa fa-ban" (click) = "remove(tech)"><span class="tooltiptext">Remove Technology</span></i></td>
+        <td> <i class="fa fa-ban" (click) = "remove(tech)"><span class="tooltiptext">Remove Technology</span></i>&nbsp;&nbsp;&nbsp;
+          <i class="fa fa-edit" (click)="frame.show(); get(tech)"></i>
+        </td>
     </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 </table>
 </div>

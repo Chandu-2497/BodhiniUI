@@ -44,6 +44,7 @@ import { SearchService } from './service/search.service';
 import { TrainingService } from './service/training.service';
 import { TechnologyService } from './service/technology.service';
 import { PaymentService } from './service/payment.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -58,7 +59,7 @@ import { PaymentService } from './service/payment.service';
     AlertComponent,
     HomepageComponent,
     UserMgtComponent,
-    NotificationsComponent,
+    // NotificationsComponent,
     MentorRegisterComponent
 
    
@@ -80,7 +81,8 @@ import { PaymentService } from './service/payment.service';
     TooltipModule,
     PopoverModule,
     ButtonsModule   ,
-    HomeModule
+    HomeModule,
+    NgbModule
   ],
   providers: [
     AuthGuard,

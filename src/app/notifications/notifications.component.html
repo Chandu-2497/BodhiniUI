@@ -1,1 +1,30 @@
-<p>notifications works!</p>
+
+
+<h2>Notifications</h2>
+<caption>Requests</caption>
+<table align="center" class="table table-hover">
+    
+    <thead class="thead-dark">
+            <tr>
+                    <th scope="col">UserName</th>
+                    <th scope="col">SkillName</th>
+                    <th scope="col">Fees</th>
+                    <th scope="col">Accept Status</th>
+                    <th scope="col" *ngIf="role == 'Mentor'">Action</th>
+                </tr>
+    </thead>
+    
+    <tr *ngFor="let train of trainings">
+        <!-- <th [ngClass]="{'blocked': !user.active }"  scope="row"><img class="avatar" alt="Avatar" src="../../assets/images/avatar.jpg"></th> -->
+        <td>{{train.userName}}</td>
+        <td>{{train.skillName}}</td>
+        <td>{{train.fees}}</td>
+        <td>{{train.accepted? 'yes':'no'}}</td>
+        <td *ngIf="role == 'Mentor'">
+            <button [disabled]="accepted" type="button" class="btn btn-primary" (click)="accept(train)">Accept</button>
+            <!-- <button type="button"class="btn btn-primary" (click)="accept(user)"></button> -->
+           
+    </td>
+    
+    </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+</table>

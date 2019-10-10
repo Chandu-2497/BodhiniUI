@@ -18,7 +18,7 @@ export class TechnologyService {
     }
 
     updateTechnology(tech : any){
-        return this.http.put(`${environment.url}technology`,tech);
+        return this.http.put(`${environment.url}technology`,tech,{responseType: 'text'});
     }
 
     getAllTechnologies(){

@@ -44,7 +44,7 @@
        <button type="button" class="btn btn-light"><a routerLink="/login">Login</a></button>
     </li>
       <li class="nav-item" *ngIf="isLogin">
-         <button type="button" class="btn btn-light"> <a routerLink="/notification">Notifications</a></button>
+         <button type="button" class="btn btn-light"> <a routerLink="/dashboard/notification">Notifications</a></button>
       </li>
       <li class="nav-item" *ngIf="isLogin">
         <button class="btn btn-primary" (click)="logout()">Logout</button>

@@ -9,6 +9,7 @@ import { CurrentTrainingsComponent } from '../current-trainings/current-training
 import { MentorSearchComponent } from '../mentor-search/mentor-search.component';
 import { PaymentsComponent } from '../payments/payments.component';
 import { TransactionComponent } from '../transaction/transaction.component';
+import { NotificationsComponent } from '../notifications/notifications.component';
 
 
  const routes: Routes = [
@@ -51,7 +52,12 @@ import { TransactionComponent } from '../transaction/transaction.component';
     {
         path: 'current',
         component: CurrentTrainingsComponent
-    }]}
+    },
+    {
+        path:'notification',
+        component: NotificationsComponent
+    }
+]}
 
 ]
 @NgModule({
