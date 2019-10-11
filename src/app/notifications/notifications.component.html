@@ -21,7 +21,8 @@
         <td>{{train.fees}}</td>
         <td>{{train.accepted? 'yes':'no'}}</td>
         <td *ngIf="role == 'Mentor'">
-            <button [disabled]="accepted" type="button" class="btn btn-primary" (click)="accept(train)">Accept</button>
+            <button [disabled]="train.accepted" type="button" class="btn btn-primary" (click)="accept(train)">Accept</button>
+            <button [disabled]="!train.accepted" type="button" class="btn btn-danger" (click)="reject(train)">Reject</button>
             <!-- <button type="button"class="btn btn-primary" (click)="accept(user)"></button> -->
            
     </td>

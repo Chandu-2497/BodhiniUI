@@ -3,6 +3,7 @@ import { NotificationService } from '../service/notification.service';
 import { ToastrService } from 'ngx-toastr';
 import { TrainingService } from '../service/training.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { PaymentService } from '../service/payment.service';
 
 @Component({
   selector: 'app-notifications',
@@ -15,7 +16,8 @@ export class NotificationsComponent implements OnInit {
   trainingForm : FormGroup;
   currentUser:any;
   trainings: any;
-  constructor(private notiService: NotificationService,private toastr: ToastrService,private trainService: TrainingService
+  constructor(private notiService: NotificationService,private toastr: ToastrService,private trainService: TrainingService,
+    private payService: PaymentService
     ) { }
 
   ngOnInit() {
@@ -69,6 +71,24 @@ this.getByUser();
     })
   }
 
+  reject(train: any){
+    train.accepted = false;
+    this.notiService.update(train).subscribe(res => {
+      if(res){
+this.toastr.success("Success","Rejectetd SUccessfully");
+
+if(this.role == 'Mentor'){
+  this.getAll();
+}
+else if(this.role == 'User'){
+this.getByUser();
+
+}
+      }
+    })
+
+  }
+
   addTrain(train){
 
     this.trainingForm = new FormGroup({
@@ -101,6 +121,14 @@ this.getByUser();
         this.toastr.success("Success","Training Added");
       }
     })
+
+  }
+
+  pament(train: any){
+
+
+
+
 
   }
 

@@ -32,6 +32,7 @@
                       <div class="card-title"><h5>{{train.skillName}} &nbsp;&nbsp;&nbsp;<i class="fa fa-edit" (click)="frame.show();get(train)"><span class="tooltiptext">Edit Status</span></i></h5> </div>
                       <div class="card-body">
                         <div class = "card-text"><p><b>Mentor:</b> {{train.mentorName}}<br/><b>End Date: </b>{{train.endDate}}</p></div>
+                        <button type="button" class="btn btn-primary" (click)="pay.show(); payment(train);">Pay</button>
                         <div class="progress">
                                 <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
                                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" [style.width.%]="train.progress">
@@ -96,4 +97,33 @@
                   <!--/.Content-->
                 </div>
  </div>
+
+
+
+
+ <div mdbModal #pay="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+                   aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-notify modal-warning" role="document">
+                  Content
+                  <div class="modal-content">
+                    <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="pay.hide()">
+                      <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
+
+                   </div>
+                  
+                   </div>
+                </div>
+                <app-payments style="width: 100%;"></app-payments>
+                      <!-- </div>
+              
+                      </div>
+               -->
+                      
+                    
+                 
+               
+ </div>
+  
               
